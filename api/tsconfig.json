@@ -1,0 +1,17 @@
+{
+    "extends": "@tsconfig/node18/tsconfig.json",
+    "compilerOptions": {
+        "preserveConstEnums": true,
+        "strict": true,
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "moduleResolution": "node16",
+        "allowJs": true,
+        "outDir": ".build/src"
+      },
+    "include": ["src/**/*","src/utils/**/*.ts",".env.dev"],
+    "exclude": ["node_modules"]
+  }
+  
