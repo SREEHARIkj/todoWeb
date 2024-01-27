@@ -21,8 +21,6 @@ services:
       MYSQL_DATABASE: 'todo_schema'
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-    # expose:
-    #   - 3306
     ports:
       - 3306:3306
     networks:
@@ -38,5 +36,6 @@ services:
       - ./api/.env.dev  # Specify the path to the .env.local file
     environment:
       - DB_PORT=3306
+      - DB_HOST='mysql'
     networks:
       - networkOne
