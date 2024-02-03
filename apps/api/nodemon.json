@@ -4,4 +4,3 @@
     "ignore": [],
     "exec": "tsc && node --inspect --env-file=.env.dev .build/src/server.js"
 }
-  

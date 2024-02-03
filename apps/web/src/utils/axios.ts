@@ -11,9 +11,9 @@ export function api() {
       // xsrfHeaderName: "X-CSRFToken"  // Request header name
       Accept: '*/*',
       'Access-Control-Allow-Origin': '*',
-    } 
-  } as AxiosRequestConfig
-  const instance = axios.create({ baseURL: baseUrl, ...(params) });
+    },
+  } as AxiosRequestConfig;
+  const instance = axios.create({ baseURL: baseUrl, ...params });
 
   return instance;
 }

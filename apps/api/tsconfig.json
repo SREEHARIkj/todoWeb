@@ -9,9 +9,8 @@
         "forceConsistentCasingInFileNames": true,
         "moduleResolution": "node16",
         "allowJs": true,
-        "outDir": ".build/src"
-      },
-    "include": ["src/**/*","src/utils/**/*.ts",".env.dev"],
-    "exclude": ["node_modules"]
-  }
-  
+        "outDir": ".build/src",
+    },
+    "include": ["src/**/*", "src/utils/**/*.ts", ".env.dev"],
+    "exclude": ["node_modules"],
+}
