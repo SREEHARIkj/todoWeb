@@ -13,6 +13,9 @@
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
     },
     "lint-staged": {
+        "**/*.{js,ts,tsx}": [
+            "eslint --fix"
+        ],
         "**/*": "prettier --write --ignore-unknown"
     },
     "devDependencies": {
