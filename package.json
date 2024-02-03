@@ -1,0 +1,17 @@
+{
+  "name": "@todo_app/root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "pnpm workspace run build",
+    "web": "pnpm --filter web dev",
+    "api": "pnpm --filter api dev",
+    "start": "pnpm run -r dev",
+    "test": "pnpm workspace run test",
+    "dev:run:docker": "docker compose up",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.0.6"
+  }
+}

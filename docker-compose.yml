@@ -8,7 +8,7 @@ services:
   todo-web:
     ports: 
       - 5000:5000
-    build: ./web
+    build: ./apps/web
     networks:
       - networkOne
 
@@ -31,9 +31,9 @@ services:
       - mysql
     ports: 
       - 3000:3000
-    build: ./api
+    build: ./apps/api
     env_file:
-      - ./api/.env.dev  # Specify the path to the .env.local file
+      - ./apps/api/.env.dev  # Specify the path to the .env.local file
     environment:
       - DB_PORT=3306
       - DB_HOST='mysql'

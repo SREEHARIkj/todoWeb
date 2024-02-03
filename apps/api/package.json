@@ -1,5 +1,5 @@
 {
-  "name": "todo_api",
+  "name": "api",
   "version": "1.0.0",
   "description": "",
   "main": "sever.ts",
