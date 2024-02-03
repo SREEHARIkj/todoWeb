@@ -9,8 +9,9 @@
         "start": "pnpm run -r dev",
         "test": "pnpm --filter web test",
         "dev:run:docker": "docker compose up",
-        "prepare": "husky install",
-        "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+        "prepare": "husky || true",
+        "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+        "prettier:check" :"npx prettier . --check"
     },
     "lint-staged": {
         "**/*.{js,ts,tsx}": [
