@@ -1,6 +1,7 @@
 import { api, catchErrorHandeler } from './utils/axios';
 import * as config from './config';
 import { TODO, TodoType } from './utils/types';
+import { AxiosError, AxiosResponse } from 'axios';
 
 export async function getTodos(): Promise<{
   rows: [TodoType];
@@ -12,23 +13,29 @@ export async function getTodos(): Promise<{
     .catch(catchErrorHandeler);
 }
 
-export async function addTodo(todo: TODO): Promise<unknown> {
-  return api()
-    .post(config.routes.addTodo, { todo })
-    .then((res) => res.data)
-    .catch(catchErrorHandeler);
+export async function addTodo(todo: TODO): Promise<AxiosResponse | undefined> {
+  try {
+    const result = await api().post(config.routes.addTodo, { todo });
+    return result;
+  } catch (error) {
+    catchErrorHandeler(error as AxiosError);
+  }
 }
 
-export async function deleteTodo(id: number): Promise<unknown> {
-  return api()
-    .delete(`${config.routes.deleteTodo}/${id}`)
-    .then((res) => res.data)
-    .catch(catchErrorHandeler);
+export async function deleteTodo(id: number): Promise<AxiosResponse | undefined> {
+  try {
+    const result = await api().delete(`${config.routes.deleteTodo}/${id}`);
+    return result;
+  } catch (error) {
+    catchErrorHandeler(error as AxiosError);
+  }
 }
 
-export async function updateTodo(id: number, todo: TODO): Promise<unknown> {
-  return api()
-    .put(`${config.routes.updateTodo}/${todo}/${id}`)
-    .then((res) => res.data)
-    .catch(catchErrorHandeler);
+export async function updateTodo(id: number, todo: TODO): Promise<AxiosResponse | undefined> {
+  try {
+    const result = api().put(`${config.routes.updateTodo}/${todo}/${id}`);
+    return result;
+  } catch (error) {
+    catchErrorHandeler(error as AxiosError);
+  }
 }
