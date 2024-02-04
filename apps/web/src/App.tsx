@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import { TODO, TodoType } from './utils/types';
 import './App.css';
 import { addTodo, deleteTodo, getTodos, updateTodo } from './service';
+import CustomToast from './Components/CustomToast';
 
 function App() {
     const [todo, setTodo] = useState<TODO>('');
     const [todoList, setTodoList] = useState<TodoType[]>([]);
     const [editTodo, setEditTodo] = useState<number | null>(null);
+    const [showToast, setShowToast] = useState<string>('');
 
     const handleGetTodos = async () => {
         await getTodos().then((data) => {
@@ -15,15 +17,24 @@ function App() {
     };
 
     const handleAddTodo = (todo: TODO) => {
-        addTodo(todo);
+        addTodo(todo).then((res) => {
+            setShowToast(res?.data?.message);
+            res?.data?.message && handleGetTodos();
+        });
     };
 
     const handleDeleteTodo = (id: number) => {
-        deleteTodo(id);
+        deleteTodo(id).then((res) => {
+            setShowToast(res?.data?.message);
+            res?.data?.message && handleGetTodos();
+        });
     };
 
     const handleUpdateTodo = (id: number, todo: TODO) => {
-        updateTodo(id, todo);
+        updateTodo(id, todo).then((res) => {
+            setShowToast(res?.data?.message);
+            res?.data?.message && handleGetTodos();
+        });
     };
 
     useEffect(() => {
@@ -59,6 +70,7 @@ function App() {
                 onChange={({ target: { value } }) => setTodo(value ?? '')}
             />
             <button onClick={() => handleAddTodo(todo)}>Add Todo</button>
+            {showToast && <CustomToast message={showToast} />}
         </>
     );
 }
