@@ -11,7 +11,15 @@ services:
         build: ./apps/web
         networks:
             - networkOne
-
+        develop:
+            watch:
+                - action: sync
+                  path: ./apps/web/src
+                  target: ./src
+                  ignore:
+                      - node_modules/
+                - action: rebuild
+                  path: package.json
     mysql:
         image: mysql:latest
         restart: always
@@ -39,3 +47,12 @@ services:
             - DB_HOST='mysql'
         networks:
             - networkOne
+        develop:
+            watch:
+                - action: sync
+                  path: ./apps/api/src
+                  target: ./src
+                  ignore:
+                      - node_modules/
+                - action: rebuild
+                  path: package.json

@@ -8,10 +8,11 @@
         "api": "pnpm --filter api dev",
         "start": "pnpm run -r dev",
         "test": "pnpm --filter web test",
-        "dev:run:docker": "docker compose up",
+        "dev:docker": "docker compose up",
+        "dev:docker:watch": "docker compose watch",
         "prepare": "husky || true",
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-        "prettier:check" :"npx prettier . --check"
+        "prettier:check": "npx prettier . --check"
     },
     "lint-staged": {
         "**/*.{js,ts,tsx}": [

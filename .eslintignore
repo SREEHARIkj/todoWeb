@@ -1,0 +1,19 @@
+# Ignore root level directories
+node_modules/
+dist/
+coverage/
+
+# Ignore nested directories in packages
+**/node_modules/
+**/dist/
+**/coverage/
+
+# Ignore specific files
+*.log
+*.json
+*.lock
+*.md
+*.txt
+
+
+
